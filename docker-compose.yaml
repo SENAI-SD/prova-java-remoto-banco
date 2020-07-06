@@ -1,0 +1,21 @@
+version: "3.1"
+services:
+  db:
+    build: 
+      dockerfile: ./postgres.dockerfile
+      context: ./docker
+    image: ist-java-db
+    container_name: ist-db-container
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ist
+      POSTGRES_USER: ist
+      POSTGRES_DB: ist
+    ports:
+      - "5432:5432"
+    networks:
+      - ist-network
+
+networks: 
+  ist-network:
+    driver: bridge
